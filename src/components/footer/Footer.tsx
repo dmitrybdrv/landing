@@ -11,8 +11,7 @@ export const Footer = () => {
 
                 <div className={style.footerBlock1}>
                     <h3>Информация</h3>
-                    <a href={'xxx'}>Политика сайта</a>
-                    <a href={'zzz'}>Политика конфиденциальности</a>
+                    <a href={'zzz'}>Политика конфиденциальности персональных данных</a>
                 </div>
 
                 <div className={style.footerBlock2}>

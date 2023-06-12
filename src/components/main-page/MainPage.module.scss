@@ -1,10 +1,10 @@
 .mainPageContainer {
   min-height: 90vh;
+  flex-wrap: wrap;
 
   display: flex;
 
   .mainPageImage {
-
     width: 50%;
     padding: 30px;
 
@@ -40,6 +40,27 @@
     & button:hover {
       cursor: pointer;
       background: #5050f3;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .mainPageImage {
+      width: 100%;
+    }
+    .mainPageText {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .mainPageImage {
+      & img {
+        width: 320px;
+      }
+    }
+  }
+  @media screen and (max-width: 320px) {
+    .mainPageImage {
+      display: none;
     }
   }
 }

@@ -4,6 +4,7 @@ import but from "../../assets/img/click.png";
 import email from "../../assets/img/address.png";
 import press from "../../assets/img/press-button.png";
 import price from "../../assets/img/best-price.png";
+import {DrawerComponent} from "../drawer/DrawerComponent.tsx";
 
 export const Instruction = () => {
     return (
@@ -11,33 +12,20 @@ export const Instruction = () => {
             <div className={style.instructionPageImage}>
                 <img src={mack3} alt="instruction"/>
             </div>
+
             <div className={style.instructionPageText}>
                 <h3>Сделать заказ очень просто!</h3>
                 <ul>
-                    <li><img src={but} alt="button"/> Кликните по кнопке "Сделать заказ</li>
+                    <li><img src={but} alt="button"/> Кликните по кнопке "Запросить прайс"</li>
                     <li><img src={email} alt="email"/> В открывшемся окне введите свой адрес электронной почты в соответствующее поле.</li>
-                    <li><img src={press} alt="press"/> Нажмите кнопку "Запросить прайс</li>
+                    <li><img src={press} alt="press"/> Нажмите кнопку "Отправить"</li>
                     <li><img src={price} alt="button"/> После обработки запроса, на указанный адрес электронной почты придет актуальный прайс-лист с
                         ценами на товары, форма оплаты и сроки доставки. Также мы отправим всю необходимую информацию
                         для дальнейшего оформления заказа.
                     </li>
                 </ul>
-                <button>Запросить прайс</button>
+                <DrawerComponent/>
             </div>
         </div>
     )
 }
-
-/*
-*  <h2>Сделать заказ очень просто!</h2>
-                <ul>
-                    <li>Кликните по кнопке "Сделать заказ</li>
-                    <li>В открывшемся окне введите свой адрес электронной почты в соответствующее поле.</li>
-                    <li>Нажмите кнопку "Запросить прайс</li>
-                    <li>После обработки запроса, на указанный адрес электронной почты придет актуальный прайс-лист с
-                        ценами на товары, форма оплаты и сроки доставки. Также мы отправим всю необходимую информацию
-                        для дальнейшего оформления заказа.
-                    </li>
-                </ul>
-                <button>Запросить прайс</button>
-* */

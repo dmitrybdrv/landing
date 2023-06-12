@@ -5,10 +5,17 @@
   width: 100%;
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 10;
+  background: #fbfbfb;
+  box-shadow: 5px 5px 5px #f3f0f0;
 
   & h1 {
     align-items: center;
     margin-left: 10px;
   }
+
+  @media screen and (max-width: 768px) {
+
+  }
+
 }

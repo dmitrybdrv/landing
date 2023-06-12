@@ -1,6 +1,7 @@
 .instructionPageContainer {
   display: flex;
   min-height: 70vh;
+  flex-wrap: wrap;
 
   .instructionPageImage {
     width: 50%;
@@ -50,6 +51,29 @@
     & button:hover {
       cursor: pointer;
       background: #5050f3;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .instructionPageImage {
+      width: 100%;
+    }
+    .instructionPageText {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .instructionPageImage {
+      & img {
+        width: 300px;
+      }
+    }
+  }
+  @media screen and (max-width: 320px) {
+    .instructionPageImage {
+      & img {
+        display: none;
+      }
     }
   }
 }

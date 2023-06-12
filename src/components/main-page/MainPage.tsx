@@ -1,5 +1,6 @@
 import style from './MainPage.module.scss'
 import razor from '../../assets/img/mainRazor.gif'
+import {DrawerComponent} from "../drawer/DrawerComponent.tsx";
 
 export const MainPage = () => {
     return (
@@ -11,7 +12,7 @@ export const MainPage = () => {
                 <h1>Оригинальные сменные картриджи оптом на gilletteopt.ru</h1>
                 <h2>Быстрая доставка, надежное партнерство, уверенность в качестве - мы создаем новый уровень оптовых
                     продаж картриджей Gillette!</h2>
-                <button>Запросить прайс</button>
+                <DrawerComponent/>
             </div>
         </div>
     )

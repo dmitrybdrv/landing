@@ -7,15 +7,15 @@ import {Footer} from "./components/footer/Footer.tsx";
 
 function App() {
 
-  return (
-    <>
-        <Header/>
-        <MainPage/>
-        <Product/>
-        <Instruction/>
-        <Footer/>
-    </>
-  )
+    return (
+        <>
+            <Header/>
+            <MainPage/>
+            <Product/>
+            <Instruction/>
+            <Footer/>
+        </>
+    )
 }
 
 export default App
