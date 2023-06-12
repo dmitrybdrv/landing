@@ -1,0 +1,50 @@
+.footerContainer {
+  width: 100%;
+  min-height: 80px;
+  padding: 30px;
+  display: flex;
+  margin-top: 30px;
+
+  .footerText {
+    width: 50%;
+    display: flex;
+
+    .footerBlock1 {
+      width: 50%;
+      display: grid;
+      & h3 {
+        color: #5e5b5b;
+      }
+
+      & a, p, h3 {
+        margin: 5px 0;
+      }
+    }
+
+    .footerBlock2 {
+      width: 50%;
+      display: grid;
+    }
+
+
+  }
+
+  .footerInfo {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+
+    & span {
+      display: flex;
+      align-items: center;
+      padding: 5px 0;
+      margin: 0 20px;
+
+      & img {
+        width: 40px;
+        margin-right: 10px;
+      }
+    }
+
+  }
+}
