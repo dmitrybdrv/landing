@@ -15,7 +15,7 @@ export const Footer = () => {
                 </div>
 
                 <div className={style.footerBlock2}>
-                   <p>Связаться с нами можно по:</p>
+                   <p>Связь с нами:</p>
                     <span>@gilletteopt.ru</span>
                     <span>8 495 000 12 12</span>
                 </div>
@@ -23,9 +23,9 @@ export const Footer = () => {
             </div>
 
             <div className={style.footerInfo}>
-                <span><img src={telega} alt="telega"/><a href="">Telegram</a></span>
-                <span><img src={twitter} alt="twitter"/><a href="">Twitter</a></span>
-                <span><img src={email} alt="email"/><a href="">Email</a></span>
+                <span><img src={telega} alt="telega"/><a href="https://web.telegram.org/k/" target={'_blank'}>Telegram</a></span>
+                <span><img src={twitter} alt="twitter"/><a href="https://en.wikipedia.org/wiki/Twitter" target={'_blank'}>Twitter</a></span>
+                <span><img src={email} alt="email"/><a href="https://www.whatsapp.com/" target={'_blank'}>WhatsApp</a></span>
             </div>
         </footer>
     )

@@ -5,7 +5,7 @@ export const NavBar = () => {
     return (
         <nav className={style.navbarContainer}>
 
-            <Link activeClass="active" to="main" spy={true} smooth={true} duration={500}>
+            <Link activeClass="active" to="main" spy={true} offset={-20} smooth={true} duration={500}>
                 Главная
             </Link>
 
