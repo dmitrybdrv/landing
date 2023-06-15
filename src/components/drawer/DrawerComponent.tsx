@@ -1,9 +1,13 @@
-import { useDisclosure } from '@mantine/hooks';
+import {useDisclosure} from '@mantine/hooks';
 import {Drawer, Button, Group, TextInput, Checkbox} from '@mantine/core';
 import {useForm} from "@mantine/form";
+import {sendApi} from "../../api/mainApi.ts";
+import {useEffect} from "react";
+
 
 export const DrawerComponent = () => {
-    const [opened, { open, close }] = useDisclosure(false);
+    const [opened, {open, close}] = useDisclosure(false);
+
     const form = useForm({
         initialValues: {
             email: '',
@@ -12,9 +16,16 @@ export const DrawerComponent = () => {
         },
         validate: {
             email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-        },
-})
+        }
+    })
     const disabledButton = !form.values.termsOfService
+
+    useEffect(() => {
+        sendApi.checkServ().then((res) => {
+            console.log(res)
+        })
+    }, [])
+
 
     return (
         <>
@@ -22,8 +33,8 @@ export const DrawerComponent = () => {
                 opened={opened}
                 onClose={close}
                 title="Запросить прайс"
-                transitionProps={{ transition: 'rotate-left', duration: 150, timingFunction: 'linear' }}>
-                <form onSubmit={form.onSubmit((values) => console.log(values))}>
+                transitionProps={{transition: 'rotate-left', duration: 150, timingFunction: 'linear'}}>
+                <form onSubmit={ form.onSubmit((value) => sendApi.sendMail(value)) }>
                     <TextInput
                         withAsterisk
                         label="Email"
@@ -40,7 +51,7 @@ export const DrawerComponent = () => {
                     <Checkbox
                         mt="md"
                         label='С политикой конфиденциальности согласен'
-                        {...form.getInputProps('termsOfService', { type: 'checkbox' })}
+                        {...form.getInputProps('termsOfService', {type: 'checkbox'})}
                     />
 
                     <div style={{margin: '20px 0'}}>
@@ -49,7 +60,7 @@ export const DrawerComponent = () => {
 
                     <Group position="right" mt="md">
                         <Button type="submit"
-                        disabled={disabledButton}
+                                disabled={disabledButton}
                         >Отправить</Button>
                     </Group>
                 </form>
