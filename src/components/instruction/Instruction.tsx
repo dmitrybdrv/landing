@@ -4,7 +4,7 @@ import but from "../../assets/img/click.png";
 import email from "../../assets/img/address.png";
 import press from "../../assets/img/press-button.png";
 import price from "../../assets/img/best-price.png";
-import {DrawerComponent} from "../drawer/DrawerComponent.tsx";
+import {DataRequest} from "../../features/dataRequest/DataRequest.tsx";
 
 export const Instruction = () => {
     return (
@@ -24,7 +24,7 @@ export const Instruction = () => {
                         для дальнейшего оформления заказа.
                     </li>
                 </ul>
-                <DrawerComponent/>
+                <DataRequest/>
             </div>
         </div>
     )

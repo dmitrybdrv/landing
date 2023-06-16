@@ -11,11 +11,11 @@ export const Footer = () => {
 
                 <div className={style.footerBlock1}>
                     <h3>Информация</h3>
-                    <a href={'zzz'}>Политика конфиденциальности персональных данных</a>
+                    <a href={'../src/common/security_policy.docx'} target={'_blank'}>Политика конфиденциальности персональных данных</a>
                 </div>
 
                 <div className={style.footerBlock2}>
-                   <p>Связь с нами:</p>
+                    <h3>Контакты:</h3>
                     <span>@gilletteopt.ru</span>
                     <span>8 495 000 12 12</span>
                 </div>

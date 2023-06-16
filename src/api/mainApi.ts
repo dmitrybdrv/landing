@@ -7,12 +7,8 @@ export const instance = axios.create({
 
 export const sendApi = {
     sendMail(data: DataType) {
-        return instance.post(`send-email`, data)
-    },
-    checkServ() {
-        return instance.get(`/`)
+        return instance.post<RequestServerType>(`send-email`, data)
     }
-
 }
 
 export type DataType = {
@@ -20,3 +16,14 @@ export type DataType = {
     name: string
     termsOfService: boolean
 }
+
+export type RequestServerType = {
+    message?: string
+    error?: string
+}
+
+export const StatusCode = {
+    Success: 200,
+    ClientError: 400,
+    ServerError: 500
+}as const

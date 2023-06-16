@@ -1,12 +1,14 @@
 import {useDisclosure} from '@mantine/hooks';
 import {Drawer, Button, Group, TextInput, Checkbox} from '@mantine/core';
 import {useForm} from "@mantine/form";
-import {sendApi} from "../../api/mainApi.ts";
-import {useEffect} from "react";
+import {DataType} from "../../api/mainApi.ts";
+import {appThunk} from "../../app/app.slice.ts";
+import {useAppDispatch} from "../../utils/hooks/useAppDispatch.ts";
 
 
-export const DrawerComponent = () => {
+export const DataRequest = () => {
     const [opened, {open, close}] = useDisclosure(false);
+    const dispatch = useAppDispatch()
 
     const form = useForm({
         initialValues: {
@@ -20,11 +22,9 @@ export const DrawerComponent = () => {
     })
     const disabledButton = !form.values.termsOfService
 
-    useEffect(() => {
-        sendApi.checkServ().then((res) => {
-            console.log(res)
-        })
-    }, [])
+    const onSendData = (value: DataType) => {
+        dispatch(appThunk.sendEmail(value))
+    }
 
 
     return (
@@ -34,7 +34,7 @@ export const DrawerComponent = () => {
                 onClose={close}
                 title="Запросить прайс"
                 transitionProps={{transition: 'rotate-left', duration: 150, timingFunction: 'linear'}}>
-                <form onSubmit={ form.onSubmit((value) => sendApi.sendMail(value)) }>
+                <form onSubmit={ form.onSubmit((value) => onSendData(value)) }>
                     <TextInput
                         withAsterisk
                         label="Email"

@@ -26,6 +26,12 @@
     .footerBlock2 {
       width: 50%;
       display: grid;
+      & h3 {
+        color: #5e5b5b;
+      }
+      & span, h3 {
+        margin: 5px 0;
+      }
     }
 
 
