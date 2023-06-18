@@ -15,7 +15,6 @@ const sendEmail = createAppAsyncThunk<any, DataType>
         }else if (res.status === StatusCode.ServerError) {
             return {message: res.data.error}
         }
-
     } catch (e) {
         const err = errorHandler(e)
         return rejectWithValue(err)
@@ -25,12 +24,12 @@ const sendEmail = createAppAsyncThunk<any, DataType>
 })
 
 type initialStateType = {
-    messages:  string,
+    messages:  string | null,
     error: string | null,
     loading: boolean,
 }
 const initialState = {
-    messages: '',
+    messages: null,
     error: null,
     loading: false,
 } as initialStateType
@@ -53,6 +52,24 @@ const slice = createSlice({
             .addCase(sendEmail.fulfilled, (state, action) => {
             state.messages = action.payload.message
         })
+            .addMatcher((action) => {
+                return action.type.endsWith('pending')
+            }, (state) => {
+                state.error = ''
+                state.messages = ''
+                state.loading = true
+            })
+            .addMatcher((action) => {
+                return action.type.endsWith('fulfilled')
+            }, (state) => {
+                state.loading = false
+            })
+            .addMatcher((action) => {
+                return action.type.endsWith('rejected')
+            }, (state, action) => {
+                state.error = action.payload
+                state.loading = false
+            })
     }
 })
 

@@ -22,8 +22,9 @@ export const DataRequest = () => {
     })
     const disabledButton = !form.values.termsOfService
 
-    const onSendData = (value: DataType) => {
-        dispatch(appThunk.sendEmail(value))
+    const onSendData = async (value: DataType) => {
+        await dispatch(appThunk.sendEmail(value))
+        close()
     }
 
 
