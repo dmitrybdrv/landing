@@ -8,7 +8,7 @@ export const useToasts = () => {
     const error = useAppSelector(errorSelector)
 
     if (message) {
-        toast.info(message)
+        toast.success(message)
     } else
     if(error) {
         toast.error(error)
