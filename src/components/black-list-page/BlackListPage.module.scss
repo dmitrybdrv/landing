@@ -1,0 +1,31 @@
+.blackListContainer {
+  height: 100%;
+
+  header {
+    margin-bottom: 20px;
+  }
+
+  .blackListMain {
+    & button {
+      color: #fff;
+      font-size: 26px;
+      background: #6464f3;
+      width: fit-content;
+      height: fit-content;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    & button:hover {
+      cursor: pointer;
+      background: #5050f3;
+    }
+
+    & button:disabled {
+      background: #a1a1d9;
+      cursor: default;
+    }
+  }
+
+}

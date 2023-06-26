@@ -6,7 +6,8 @@ import {appThunk} from "../../app/app.slice.ts";
 import {useAppDispatch} from "../../utils/hooks/useAppDispatch.ts";
 
 
-export const DataRequest = () => {
+export const PriceRequest = () => {
+
     const [opened, {open, close}] = useDisclosure(false);
     const dispatch = useAppDispatch()
 
@@ -26,7 +27,6 @@ export const DataRequest = () => {
         await dispatch(appThunk.sendEmail(value))
         close()
     }
-
 
     return (
         <>
@@ -56,7 +56,7 @@ export const DataRequest = () => {
                     />
 
                     <div style={{margin: '20px 0'}}>
-                        <a href={'xxxx'} target={'_blank'}>Политика конфиденциальности</a>
+                        <a href={'/landing/src/common/security_policy.docx'} target={'_blank'}>Политика конфиденциальности</a>
                     </div>
 
                     <Group position="right" mt="md">

@@ -8,11 +8,31 @@ const sendEmail = createAppAsyncThunk<any, DataType>
     try {
         dispatch(appActions.setLoading(true))
         const res = await sendApi.sendMail(arg)
-        if(res.status === StatusCode.Success) {
+        if (res.status === StatusCode.Success) {
+            return {message: res.data.message, email: arg.email}
+        } else if (res.status === StatusCode.ClientError) {
+            return {message: res.data.error}
+        } else if (res.status === StatusCode.ServerError) {
+            return {message: res.data.error}
+        }
+    } catch (e) {
+        const err = errorHandler(e)
+        return rejectWithValue(err)
+    } finally {
+        dispatch(appActions.setLoading(false))
+    }
+})
+
+const unsubscribe = createAppAsyncThunk<any, {id: string}>
+('app/unsubscribe', async (arg, {dispatch, rejectWithValue}) => {
+    try {
+        dispatch(appActions.setLoading(true))
+        const res = await sendApi.unsubscribe({id: arg.id})
+        if (res.status === StatusCode.Success) {
             return {message: res.data.message}
         } else if (res.status === StatusCode.ClientError) {
             return {message: res.data.error}
-        }else if (res.status === StatusCode.ServerError) {
+        } else if (res.status === StatusCode.ServerError) {
             return {message: res.data.error}
         }
     } catch (e) {
@@ -24,7 +44,7 @@ const sendEmail = createAppAsyncThunk<any, DataType>
 })
 
 type initialStateType = {
-    messages:  string | null,
+    messages: string | null,
     error: string | null,
     loading: boolean,
 }
@@ -33,7 +53,6 @@ const initialState = {
     error: null,
     loading: false,
 } as initialStateType
-
 
 
 const slice = createSlice({
@@ -46,12 +65,13 @@ const slice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(sendEmail.pending, (state) => {
-                state.messages = ''
-            })
             .addCase(sendEmail.fulfilled, (state, action) => {
-            state.messages = action.payload.message
-        })
+                state.messages = action.payload.message
+            })
+            .addCase(unsubscribe.fulfilled, (state, action) => {
+                state.messages = action.payload.message
+            })
+
             .addMatcher((action) => {
                 return action.type.endsWith('pending')
             }, (state) => {
@@ -74,4 +94,4 @@ const slice = createSlice({
 })
 
 export const {reducer: appReducer, actions: appActions} = slice
-export const appThunk = {sendEmail}
+export const appThunk = {sendEmail, unsubscribe}

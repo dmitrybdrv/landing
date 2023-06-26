@@ -1,13 +1,16 @@
 import axios from "axios";
 
 export const instance = axios.create({
-    baseURL: 'http://localhost:3000/',
+    baseURL: 'http://localhost:5000/',
     headers: {'Content-Type': 'application/json'}
 })
 
 export const sendApi = {
     sendMail(data: DataType) {
         return instance.post<RequestServerType>(`send-email`, data)
+    },
+    unsubscribe(data: UnsubscribeDataType) {
+        return instance.post(`unsubscribe-page/:id`, data)
     }
 }
 
@@ -27,3 +30,7 @@ export const StatusCode = {
     ClientError: 400,
     ServerError: 500
 }as const
+
+export type UnsubscribeDataType = {
+    id: string
+}
