@@ -1,20 +1,18 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {createAppAsyncThunk} from "../utils/createAppAsyncThunk.ts";
-import {DataType, sendApi, StatusCode} from "../api/mainApi.ts";
+import {DataType, sendApi} from "../api/mainApi.ts";
 import {errorHandler} from "../utils/errorHandler.ts";
 
+
+/**
+ * Thunk для запроса на сервер - на получение письма
+ */
 const sendEmail = createAppAsyncThunk<any, DataType>
 ('app/sendEmail', async (arg, {dispatch, rejectWithValue}) => {
     try {
         dispatch(appActions.setLoading(true))
         const res = await sendApi.sendMail(arg)
-        if (res.status === StatusCode.Success) {
-            return {message: res.data.message, email: arg.email}
-        } else if (res.status === StatusCode.ClientError) {
-            return {message: res.data.error}
-        } else if (res.status === StatusCode.ServerError) {
-            return {message: res.data.error}
-        }
+        return {message: res.data.message}
     } catch (e) {
         const err = errorHandler(e)
         return rejectWithValue(err)
@@ -22,19 +20,15 @@ const sendEmail = createAppAsyncThunk<any, DataType>
         dispatch(appActions.setLoading(false))
     }
 })
-
-const unsubscribe = createAppAsyncThunk<any, {id: string}>
+/**
+ * Thunk для запроса на сервер - на отписку от получение писем
+ */
+const unsubscribe = createAppAsyncThunk<any, { id: string }>
 ('app/unsubscribe', async (arg, {dispatch, rejectWithValue}) => {
     try {
         dispatch(appActions.setLoading(true))
         const res = await sendApi.unsubscribe({id: arg.id})
-        if (res.status === StatusCode.Success) {
-            return {message: res.data.message}
-        } else if (res.status === StatusCode.ClientError) {
-            return {message: res.data.error}
-        } else if (res.status === StatusCode.ServerError) {
-            return {message: res.data.error}
-        }
+        return {message: res.data.message}
     } catch (e) {
         const err = errorHandler(e)
         return rejectWithValue(err)
@@ -44,12 +38,12 @@ const unsubscribe = createAppAsyncThunk<any, {id: string}>
 })
 
 type initialStateType = {
-    messages: string | null,
+    message: string | null,
     error: string | null,
     loading: boolean,
 }
 const initialState = {
-    messages: null,
+    message: null,
     error: null,
     loading: false,
 } as initialStateType
@@ -66,17 +60,17 @@ const slice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(sendEmail.fulfilled, (state, action) => {
-                state.messages = action.payload.message
+                state.message = action.payload.message
             })
             .addCase(unsubscribe.fulfilled, (state, action) => {
-                state.messages = action.payload.message
+                state.message = action.payload.message
             })
 
             .addMatcher((action) => {
                 return action.type.endsWith('pending')
             }, (state) => {
                 state.error = ''
-                state.messages = ''
+                state.message = ''
                 state.loading = true
             })
             .addMatcher((action) => {

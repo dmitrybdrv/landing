@@ -6,6 +6,9 @@ import press from "../../assets/img/press-button.png";
 import price from "../../assets/img/best-price.png";
 import {PriceRequest} from "../../features/price-request/priceRequest.tsx";
 
+/**
+ *  Instruction - блок с иснтрукциями по заказу товара
+ */
 export const Instruction = () => {
     return (
         <div className={style.instructionPageContainer} id={'instruction'}>

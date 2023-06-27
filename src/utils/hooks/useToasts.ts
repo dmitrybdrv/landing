@@ -1,11 +1,13 @@
 import {useAppSelector} from "./useAppSelector.ts";
 import {toast} from "react-toastify";
-import {errorSelector, messageSelector} from "../../app/app.selectors.ts";
+import {errorMessageSelector, messageSelector} from "../../app/app.selectors.ts";
 
-
+/**
+ * useToasts - функция обработки всплывающих уведомлений
+ */
 export const useToasts = () => {
     const message = useAppSelector(messageSelector)
-    const error = useAppSelector(errorSelector)
+    const error = useAppSelector(errorMessageSelector)
 
     if (message) {
         toast.success(message)

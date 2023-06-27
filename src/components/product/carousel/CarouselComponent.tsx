@@ -4,7 +4,9 @@ import cass3 from "../../../assets/img/cass3.png";
 import style from './Carousel.module.scss'
 import Carousel from "nuka-carousel"
 
-
+/**
+ *  CarouselComponent - карусель с автопрокруткой изоражений товара
+ */
 export const CarouselComponent = () => {
 
     const renderBottomCenterControls = () => {

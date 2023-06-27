@@ -1,7 +1,9 @@
 import style from './Product.module.scss'
 import {CarouselComponent} from "./carousel/CarouselComponent.tsx";
 
-
+/**
+ *  Product - блок с каруселью изображений. (Описание групп товаров)
+ */
 export const Product = () => {
     return (
         <div className={style.productContainer} id={'product'}>

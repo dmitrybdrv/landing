@@ -1,5 +1,8 @@
 import {ToastContainer} from "react-toastify";
 
+/**
+ *  Toast - всплывающий "тост" при получени уведомлений/сообщений
+ */
 export const Toast = () => {
     return <ToastContainer
         position="top-center"
@@ -12,5 +15,6 @@ export const Toast = () => {
         draggable
         pauseOnHover
         theme="light"
+        style={{width: "fit-content"}}
     />
 };

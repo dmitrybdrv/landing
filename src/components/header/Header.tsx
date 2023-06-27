@@ -4,7 +4,7 @@ import style from './Header.module.scss'
 export const Header = () => {
     return (
         <header className={style.headerContainer}>
-            <h1>Gilletteopt.ru</h1>
+            <h1>GilletteOpt.ru</h1>
             <NavBar/>
         </header>
     )
