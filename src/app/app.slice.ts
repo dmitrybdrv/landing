@@ -89,3 +89,4 @@ const slice = createSlice({
 
 export const {reducer: appReducer, actions: appActions} = slice
 export const appThunk = {sendEmail, unsubscribe}
+//TODO пофиксить any
