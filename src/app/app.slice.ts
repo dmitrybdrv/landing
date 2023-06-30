@@ -7,12 +7,12 @@ import {errorHandler} from "../utils/errorHandler.ts";
 /**
  * Thunk для запроса на сервер - на получение письма
  */
-const sendEmail = createAppAsyncThunk<any, DataType>
+const sendEmail = createAppAsyncThunk<{message: string}, DataType>
 ('app/sendEmail', async (arg, {dispatch, rejectWithValue}) => {
     try {
         dispatch(appActions.setLoading(true))
         const res = await sendApi.sendMail(arg)
-        return {message: res.data.message}
+        return {message: res.data.message ?? ''}
     } catch (e) {
         const err = errorHandler(e)
         return rejectWithValue(err)
@@ -20,15 +20,16 @@ const sendEmail = createAppAsyncThunk<any, DataType>
         dispatch(appActions.setLoading(false))
     }
 })
+
 /**
  * Thunk для запроса на сервер - на отписку от получение писем
  */
-const unsubscribe = createAppAsyncThunk<any, { id: string }>
+const unsubscribe = createAppAsyncThunk<{message: string}, { id: string }>
 ('app/unsubscribe', async (arg, {dispatch, rejectWithValue}) => {
     try {
         dispatch(appActions.setLoading(true))
         const res = await sendApi.unsubscribe({id: arg.id})
-        return {message: res.data.message}
+        return {message: res.data.message ?? ''}
     } catch (e) {
         const err = errorHandler(e)
         return rejectWithValue(err)
@@ -38,14 +39,14 @@ const unsubscribe = createAppAsyncThunk<any, { id: string }>
 })
 
 type initialStateType = {
-    message: string | null,
-    error: string | null,
+    message: string,
+    error: string,
     loading: boolean,
 }
 const initialState = {
-    message: null,
-    error: null,
-    loading: false,
+    message: '',
+    error: '',
+    loading: true,
 } as initialStateType
 
 
@@ -89,5 +90,4 @@ const slice = createSlice({
 
 export const {reducer: appReducer, actions: appActions} = slice
 export const appThunk = {sendEmail, unsubscribe}
-//TODO пофиксить any
 //TODO доработать логику с загрузкой (linear)
