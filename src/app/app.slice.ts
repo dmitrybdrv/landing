@@ -49,7 +49,9 @@ const initialState = {
     loading: false,
 } as initialStateType
 
-
+/**
+ * slice - редьюсер - логика обработки thunk`s
+ */
 const slice = createSlice({
     name: 'app',
     initialState,
