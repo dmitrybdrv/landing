@@ -46,7 +46,7 @@ type initialStateType = {
 const initialState = {
     message: '',
     error: '',
-    loading: true,
+    loading: false,
 } as initialStateType
 
 
