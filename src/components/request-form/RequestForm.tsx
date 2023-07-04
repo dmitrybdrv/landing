@@ -65,7 +65,7 @@ export const RequestForm: FC<PropsType> = ({opened, close}) => {
                         {...form.getInputProps('termsOfService', {type: 'checkbox'})}
                     />
                     <div style={{margin: '20px 0'}}>
-                        <a href={'/landing/src/common/security_policy.docx'} target={'_blank'}>Политика конфиденциальности</a>
+                        <a href={'/security_policy.docx'} download>Политика конфиденциальности</a>
                     </div>
                     <Group position="right" mt="md">
                         <Button type="submit"

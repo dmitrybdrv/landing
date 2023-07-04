@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage />
     },
     {
-        path: "/landing/unsubscribe-page/:id",
+        path: "http://gilletteopt.ru/unsubscribe-page/:id",
         element: <Unsubscribe/>,
     },
 ]);
