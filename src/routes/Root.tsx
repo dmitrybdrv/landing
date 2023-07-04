@@ -5,7 +5,7 @@ import {Unsubscribe} from "../features/unsubscribe/Unsubscribe.tsx";
 
 export const router = createBrowserRouter([
     {
-        path: "/landing/",
+        path: "/",
         element: <App/>,
         errorElement: <ErrorPage />
     },

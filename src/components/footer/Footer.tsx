@@ -17,8 +17,8 @@ export const Footer = () => {
 
                 <div className={style.footerBlock2}>
                     <h3>Контакты:</h3>
-                    <span>{import.meta.env.VITE_APP_EMAIL}</span>
-                    <span>{import.meta.env.VITE_APP_PHONE_NUM}</span>
+                    <span>xxx</span>
+                    <span>yyy</span>
                 </div>
 
             </div>
