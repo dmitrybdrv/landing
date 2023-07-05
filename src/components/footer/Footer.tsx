@@ -18,7 +18,6 @@ export const Footer = () => {
                 <div className={style.footerBlock2}>
                     <h3>Контакты:</h3>
                     <span>zakaz@gilletteopt.ru</span>
-                    <span>+7 914 553 43 48</span>
                 </div>
 
             </div>
