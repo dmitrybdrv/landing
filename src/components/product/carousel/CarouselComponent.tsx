@@ -1,6 +1,7 @@
-import cass1 from "../../../assets/img/cass1.png";
-import cass2 from "../../../assets/img/cass2.png";
-import cass3 from "../../../assets/img/cass3.png";
+import cass1 from "../../../assets/img/cass1.gif";
+import cass2 from "../../../assets/img/cass2.gif";
+import cass3 from "../../../assets/img/cass3.jpeg";
+import cass4 from "../../../assets/img/cass4.gif";
 import style from './Carousel.module.scss'
 import Carousel from "nuka-carousel"
 
@@ -20,6 +21,7 @@ export const CarouselComponent = () => {
                 <img src={cass1} alt={'cass1'}/>
                 <img src={cass2} alt={'cass2'}/>
                 <img src={cass3} alt={'cass3'}/>
+                <img src={cass4} alt={'cass4'}/>
             </Carousel>
         </div>
     )

@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage />
     },
     {
-        path: "/landing/unsubscribe-page/:id",
+        path: "/unsubscribe-page/:id",
         element: <Unsubscribe/>,
     },
 ]);

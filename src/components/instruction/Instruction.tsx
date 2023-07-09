@@ -1,5 +1,5 @@
 import style from "./Instruction.module.scss";
-import mack3 from "../../assets/img/mack3.gif";
+import razor2 from "../../assets/img/razor2.gif";
 import but from "../../assets/img/click.png";
 import email from "../../assets/img/address.png";
 import press from "../../assets/img/press-button.png";
@@ -13,7 +13,7 @@ export const Instruction = () => {
     return (
         <div className={style.instructionPageContainer} id={'instruction'}>
             <div className={style.instructionPageImage}>
-                <img src={mack3} alt="instruction"/>
+                <img src={razor2} alt="instruction"/>
             </div>
 
             <div className={style.instructionPageText}>
